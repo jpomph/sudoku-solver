@@ -92,7 +92,7 @@ public class Main {
                         board.setNumber(possibleNumbers.get(0), row, column);
                         result.changeMade = true;
                     }
-                    if(possibleNumbers.size()>1 && possibleNumbers.size()==maxPossibilities){
+                    if(possibleNumbers.size()>1 && possibleNumbers.size()<=maxPossibilities){
                         UnoccupiedSquare unoccupiedSquare = new UnoccupiedSquare(row, column, possibleNumbers);
                         result.unoccupiedSquareList.add(unoccupiedSquare);
 //                        System.out.println("(" + row + "," + column + ") can only be one of: " + stringBuilder);
