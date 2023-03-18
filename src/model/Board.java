@@ -10,10 +10,19 @@ public class Board {
 
     public List<Square> squares;
 
+    public boolean integrity;
+
     public Board() {
         rows = List.of(new Row(), new Row(), new Row(), new Row(), new Row(), new Row(), new Row(), new Row(), new Row());
         columns = List.of(new Column(), new Column(), new Column(), new Column(), new Column(), new Column(), new Column(), new Column(), new Column());
         squares = List.of(new Square(), new Square(), new Square(), new Square(), new Square(), new Square(), new Square(), new Square(), new Square());
+        integrity = true;
+    }
+
+    public boolean updateNumber(Integer number, Integer row, Integer column) throws Exception{
+        setNumber(number,row, column );
+        outputBoard();
+        return checkIntegrity();
     }
 
     public void setNumber(Integer number, Integer row, Integer column){
@@ -56,7 +65,7 @@ public class Board {
         return rows.get(row).numbers.get(column);
     }
 
-    public void OutputBoard(){
+    public void outputBoard(){
         System.out.println("========================");
         for (int row=0; row<9; row++){
             StringBuilder stringBuilder = new StringBuilder();
@@ -73,6 +82,33 @@ public class Board {
             }
         }
         System.out.println("========================");
+    }
+
+    public boolean checkIntegrity(){
+        boolean integrity = true;
+        for(int row=0; row<9; row++){
+            if(!Utils.Utils.checkNumberSetIntegrity(rows.get(row), "ROW", row)){
+                integrity = false;
+            }
+        }
+        for(int col=0; col<9; col++){
+            if(!Utils.Utils.checkNumberSetIntegrity(columns.get(col), "COLUMN", col)){
+                integrity = false;
+            }
+        }
+        for(int square=0; square<9; square++){
+            if(!Utils.Utils.checkNumberSetIntegrity(squares.get(square), "SQUARE", square)){
+                integrity = false;
+            }
+        }
+
+        if(!integrity){
+            integrity = false;
+            System.out.println("BOARD DOES NOT HAVE INTEGRITY");
+        }
+
+        return integrity;
+
     }
 
 }

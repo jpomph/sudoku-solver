@@ -5,6 +5,7 @@ import model.Coordinate;
 import model.Board;
 import model.NumberSet;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -133,6 +134,20 @@ public class Utils {
             }
         }
         return newBoard;
+    }
+
+    public static boolean checkNumberSetIntegrity(NumberSet numberSet, String type, int id){
+        boolean integrity = true;
+        boolean[] numberFound = {false,false,false,false,false,false,false,false,false,false };
+        for(int number: numberSet.numbers){
+            if (number>0 && numberFound[number]==true){
+                System.out.println("NUMBER " + number + " FOUND TWICE IN " + type + " " + id);
+                integrity = false;
+            } else {
+                numberFound[number]=true;
+            }
+        }
+        return integrity;
     }
 
 }
