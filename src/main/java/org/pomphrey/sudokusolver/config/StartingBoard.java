@@ -1,4 +1,4 @@
-package config;
+package org.pomphrey.sudokusolver.config;
 
 public class StartingBoard {
 

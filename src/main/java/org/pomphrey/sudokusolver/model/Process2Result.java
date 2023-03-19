@@ -1,14 +1,15 @@
-package model;
+package org.pomphrey.sudokusolver.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProcessResult {
+public class Process2Result {
 
-    public boolean solved;
     public List<UnoccupiedSquare> unoccupiedSquareList;
+    public boolean changeMade;
 
-    public ProcessResult(){
+    public Process2Result(){
+        changeMade = false;
         unoccupiedSquareList = new ArrayList<>();
     }
 

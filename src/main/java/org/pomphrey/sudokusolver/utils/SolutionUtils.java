@@ -1,12 +1,9 @@
-package utils;
+package org.pomphrey.sudokusolver.utils;
 
-import model.*;
+import org.pomphrey.sudokusolver.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static Utils.Utils.getSquareFromCoordinates;
-import static Utils.Utils.isNumberMissing;
 
 public class SolutionUtils {
 
@@ -16,11 +13,11 @@ public class SolutionUtils {
 
         for (int number = 0; number < 9; number++) {
             for (int row = 0; row < 9; row++) {
-                if (isNumberMissing(board.rows.get(row), number)) {
+                if (Utils.isNumberMissing(board.rows.get(row), number)) {
                     //try to fit number in different positions on row
                     List<Integer> potentialPositions = new ArrayList();
                     for (int column = 0; column < 9; column++) {
-                        boolean numberIsMissing = isNumberMissing(board.columns.get(column), number);
+                        boolean numberIsMissing = Utils.isNumberMissing(board.columns.get(column), number);
                         boolean boxIsFilled = board.rows.get(row).numbers.get(column)==0? false : true;
                         if (numberIsMissing && !boxIsFilled) {
                             potentialPositions.add(column);
@@ -35,11 +32,11 @@ public class SolutionUtils {
                 }
             }
             for (int column = 0; column < 9; column++) {
-                if(isNumberMissing(board.columns.get(column),number)){
+                if(Utils.isNumberMissing(board.columns.get(column),number)){
                     //try to fit number in different positions on column
                     List<Integer> potentialPositions = new ArrayList();
                     for (int row = 0; row < 9; row++) {
-                        boolean numberIsMissing = isNumberMissing(board.rows.get(row), number);
+                        boolean numberIsMissing = Utils.isNumberMissing(board.rows.get(row), number);
                         boolean boxIsFilled = board.columns.get(column).numbers.get(row)==0? false : true;
                         if (numberIsMissing && !boxIsFilled) {
                             potentialPositions.add(row);
@@ -53,16 +50,16 @@ public class SolutionUtils {
                 }
             }
             for (int square = 0; square < 9; square++) {
-                if (isNumberMissing(board.squares.get(square), number)) {
+                if (Utils.isNumberMissing(board.squares.get(square), number)) {
                     //get the coordinates of all the positions in the square
-                    List<Coordinate> coordinates = Utils.Utils.getCoordinatesForSquare(square);
+                    List<Coordinate> coordinates = Utils.getCoordinatesForSquare(square);
                     //try to fit number in different positions on column
                     List<Integer> potentialPositions = new ArrayList();
                     for (int position = 0; position < 9; position++) {
                         int row = coordinates.get(position).row;
                         int col = coordinates.get(position).column;
-                        boolean numberIsMissingFromRow = isNumberMissing(board.rows.get(row), number);
-                        boolean numberIsMissingFromColumn = isNumberMissing(board.columns.get(col), number);
+                        boolean numberIsMissingFromRow = Utils.isNumberMissing(board.rows.get(row), number);
+                        boolean numberIsMissingFromColumn = Utils.isNumberMissing(board.columns.get(col), number);
                         boolean isPositionFilled = board.squares.get(square).numbers.get(position) == 0 ? false : true;
                         if (numberIsMissingFromRow && numberIsMissingFromColumn && !isPositionFilled) {
                             potentialPositions.add(position);
@@ -123,7 +120,7 @@ public class SolutionUtils {
         List<Integer> possibleValues = new ArrayList();
         Row row = board.rows.get(rowIndex);
         Column column = board.columns.get(columnIndex);
-        Square square = board.squares.get(getSquareFromCoordinates(rowIndex, columnIndex));
+        Square square = board.squares.get(Utils.getSquareFromCoordinates(rowIndex, columnIndex));
         if(board.getNumber(rowIndex, columnIndex)!=0){
             return possibleValues;
         }

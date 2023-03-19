@@ -1,11 +1,13 @@
-import Utils.Utils;
-import model.*;
-import utils.SolutionUtils;
+package org.pomphrey.sudokusolver;
+
+import org.pomphrey.sudokusolver.model.*;
+import org.pomphrey.sudokusolver.utils.SolutionUtils;
+import org.pomphrey.sudokusolver.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static utils.SolutionUtils.processRowsColumnsAndSquares;
+import static org.pomphrey.sudokusolver.utils.SolutionUtils.processRowsColumnsAndSquares;
 
 public class Main {
     public static void main(String[] args) throws Exception{

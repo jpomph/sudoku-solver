@@ -1,4 +1,4 @@
-package model;
+package org.pomphrey.sudokusolver.model;
 
 import java.util.List;
 

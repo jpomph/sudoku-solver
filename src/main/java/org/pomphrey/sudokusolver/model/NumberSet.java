@@ -1,6 +1,5 @@
-package model;
+package org.pomphrey.sudokusolver.model;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

@@ -1,5 +1,8 @@
-package model;
+package org.pomphrey.sudokusolver.model;
 
+import org.pomphrey.sudokusolver.utils.Utils;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Board {
@@ -10,13 +13,14 @@ public class Board {
 
     public List<Square> squares;
 
+    public List<Integer> numbers;
+
     public boolean integrity;
 
     public Board() {
         rows = List.of(new Row(), new Row(), new Row(), new Row(), new Row(), new Row(), new Row(), new Row(), new Row());
         columns = List.of(new Column(), new Column(), new Column(), new Column(), new Column(), new Column(), new Column(), new Column(), new Column());
         squares = List.of(new Square(), new Square(), new Square(), new Square(), new Square(), new Square(), new Square(), new Square(), new Square());
-        integrity = true;
     }
 
     public boolean updateNumber(Integer number, Integer row, Integer column) throws Exception{
@@ -59,6 +63,9 @@ public class Board {
                 currentSquare.numbers.set(i, number);
             }
         }
+
+        convertBoardToNumberList();
+
     }
 
     public int getNumber(int row, int column){
@@ -87,17 +94,17 @@ public class Board {
     public boolean checkIntegrity(){
         boolean integrity = true;
         for(int row=0; row<9; row++){
-            if(!Utils.Utils.checkNumberSetIntegrity(rows.get(row), "ROW", row)){
+            if(!Utils.checkNumberSetIntegrity(rows.get(row), "ROW", row)){
                 integrity = false;
             }
         }
         for(int col=0; col<9; col++){
-            if(!Utils.Utils.checkNumberSetIntegrity(columns.get(col), "COLUMN", col)){
+            if(!Utils.checkNumberSetIntegrity(columns.get(col), "COLUMN", col)){
                 integrity = false;
             }
         }
         for(int square=0; square<9; square++){
-            if(!Utils.Utils.checkNumberSetIntegrity(squares.get(square), "SQUARE", square)){
+            if(!Utils.checkNumberSetIntegrity(squares.get(square), "SQUARE", square)){
                 integrity = false;
             }
         }
@@ -109,6 +116,19 @@ public class Board {
 
         return integrity;
 
+    }
+
+    public void convertBoardToNumberList(){
+        numbers = new ArrayList<>();
+        for(int row=0; row<9; row++) {
+            for (int col = 0; col < 9; col++) {
+                numbers.add(getNumber(row, col));
+            }
+        }
+    }
+
+    public List<Integer> getNumbers(){
+        return numbers;
     }
 
 }

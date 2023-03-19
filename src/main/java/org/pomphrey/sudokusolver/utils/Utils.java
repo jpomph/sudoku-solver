@@ -1,11 +1,10 @@
-package Utils;
+package org.pomphrey.sudokusolver.utils;
 
-import config.StartingBoard;
-import model.Coordinate;
-import model.Board;
-import model.NumberSet;
+import org.pomphrey.sudokusolver.config.StartingBoard;
+import org.pomphrey.sudokusolver.model.Coordinate;
+import org.pomphrey.sudokusolver.model.Board;
+import org.pomphrey.sudokusolver.model.NumberSet;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -148,6 +147,16 @@ public class Utils {
             }
         }
         return integrity;
+    }
+
+    public static List<Integer> boardToArray(Board board){
+        List<Integer> boardAsArray = new ArrayList<>();
+        for(int row=0; row<9; row++) {
+            for (int col = 0; col < 9; col++) {
+                boardAsArray.add(board.getNumber(row, col));
+            }
+        }
+        return boardAsArray;
     }
 
 }
