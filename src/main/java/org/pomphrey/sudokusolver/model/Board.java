@@ -1,10 +1,15 @@
 package org.pomphrey.sudokusolver.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.pomphrey.sudokusolver.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@AllArgsConstructor
+@Data
 public class Board {
 
     public List<Row> rows;
@@ -12,8 +17,6 @@ public class Board {
     public List<Column> columns;
 
     public List<Square> squares;
-
-    public List<Integer> numbers;
 
     public boolean integrity;
 
@@ -64,8 +67,6 @@ public class Board {
             }
         }
 
-        convertBoardToNumberList();
-
     }
 
     public int getNumber(int row, int column){
@@ -114,21 +115,10 @@ public class Board {
             System.out.println("BOARD DOES NOT HAVE INTEGRITY");
         }
 
+        this.integrity = integrity;
+
         return integrity;
 
-    }
-
-    public void convertBoardToNumberList(){
-        numbers = new ArrayList<>();
-        for(int row=0; row<9; row++) {
-            for (int col = 0; col < 9; col++) {
-                numbers.add(getNumber(row, col));
-            }
-        }
-    }
-
-    public List<Integer> getNumbers(){
-        return numbers;
     }
 
 }

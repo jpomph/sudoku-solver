@@ -1,6 +1,7 @@
 package org.pomphrey.sudokusolver.utils;
 
 import org.pomphrey.sudokusolver.config.StartingBoard;
+import org.pomphrey.sudokusolver.model.BoardAsNumbers;
 import org.pomphrey.sudokusolver.model.Coordinate;
 import org.pomphrey.sudokusolver.model.Board;
 import org.pomphrey.sudokusolver.model.NumberSet;
@@ -22,6 +23,16 @@ public class Utils {
                 column ++;
             }
             board.setNumber(StartingBoard.numbers[i], row, column);
+        }
+        return board;
+    }
+
+    public static Board intitaliseBoard(){
+        Board board = new Board();
+        for(int row=0; row<9; row++) {
+            for (int col = 0; col < 9; col++) {
+                board.setNumber(0, row, col);
+            }
         }
         return board;
     }
@@ -149,14 +160,27 @@ public class Utils {
         return integrity;
     }
 
-    public static List<Integer> boardToArray(Board board){
-        List<Integer> boardAsArray = new ArrayList<>();
+    public static BoardAsNumbers getBoardAsNumbers(Board board){
+        BoardAsNumbers boardAsNumbers = new BoardAsNumbers();
         for(int row=0; row<9; row++) {
             for (int col = 0; col < 9; col++) {
-                boardAsArray.add(board.getNumber(row, col));
+                boardAsNumbers.getNumbers().add(board.getNumber(row, col));
             }
         }
-        return boardAsArray;
+        return boardAsNumbers;
+    }
+
+    public static Board getBoardFromNumbers(BoardAsNumbers boardAsNumbers){
+        Board board = new Board();
+        int i = 0;
+        for(int row=0; row<9; row++) {
+            for (int col = 0; col < 9; col++) {
+                board.setNumber(boardAsNumbers.getNumbers().get(i), row, col);
+                i++;
+            }
+        }
+        board.checkIntegrity();
+        return board;
     }
 
 }

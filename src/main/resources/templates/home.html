@@ -12,116 +12,279 @@
 table { border-collapse: collapse; font-family: Calibri, sans-serif; }
 colgroup, tbody { border: solid medium; }
 td { border: solid thin; height: 1.4em; width: 1.4em; text-align: center; padding: 0; }
+input { border: solid thin; height: 1.4em; width: 1.4em; text-align: center; padding: 0; }
 </style>
-<table>
-    <caption>Starting board</caption>
-    <colgroup><col><col><col>
-    <colgroup><col><col><col>
-    <colgroup><col><col><col>
-    <tbody>
-        <tr>
-            <td th:text="${board.numbers[0]}">
-            <td th:text="${board.numbers[1]}">
-            <td th:text="${board.numbers[2]}">
-            <td th:text="${board.numbers[3]}">
-            <td th:text="${board.numbers[4]}">
-            <td th:text="${board.numbers[5]}">
-            <td th:text="${board.numbers[6]}">
-            <td th:text="${board.numbers[7]}">
-            <td th:text="${board.numbers[8]}">
-        </tr>
-            <td th:text="${board.numbers[9]}">
-            <td th:text="${board.numbers[10]}">
-            <td th:text="${board.numbers[11]}">
-            <td th:text="${board.numbers[12]}">
-            <td th:text="${board.numbers[13]}">
-            <td th:text="${board.numbers[14]}">
-            <td th:text="${board.numbers[15]}">
-            <td th:text="${board.numbers[16]}">
-            <td th:text="${board.numbers[17]}">
-        <tr>
-        </tr>
-        <tr>
-            <td th:text="${board.numbers[18]}">
-            <td th:text="${board.numbers[19]}">
-            <td th:text="${board.numbers[20]}">
-            <td th:text="${board.numbers[21]}">
-            <td th:text="${board.numbers[22]}">
-            <td th:text="${board.numbers[23]}">
-            <td th:text="${board.numbers[24]}">
-            <td th:text="${board.numbers[25]}">
-            <td th:text="${board.numbers[26]}">
-        </tr>
-    </tbody>
-    <tbody>
-        <tr>
-            <td th:text="${board.numbers[27]}">
-            <td th:text="${board.numbers[28]}">
-            <td th:text="${board.numbers[29]}">
-            <td th:text="${board.numbers[30]}">
-            <td th:text="${board.numbers[31]}">
-            <td th:text="${board.numbers[32]}">
-            <td th:text="${board.numbers[33]}">
-            <td th:text="${board.numbers[34]}">
-            <td th:text="${board.numbers[35]}">
-        </tr>
-        <tr>
-            <td th:text="${board.numbers[36]}">
-            <td th:text="${board.numbers[37]}">
-            <td th:text="${board.numbers[38]}">
-            <td th:text="${board.numbers[39]}">
-            <td th:text="${board.numbers[40]}">
-            <td th:text="${board.numbers[41]}">
-            <td th:text="${board.numbers[42]}">
-            <td th:text="${board.numbers[43]}">
-            <td th:text="${board.numbers[44]}">
-        </tr>
-        <tr>
-            <td th:text="${board.numbers[45]}">
-            <td th:text="${board.numbers[46]}">
-            <td th:text="${board.numbers[47]}">
-            <td th:text="${board.numbers[48]}">
-            <td th:text="${board.numbers[49]}">
-            <td th:text="${board.numbers[50]}">
-            <td th:text="${board.numbers[51]}">
-            <td th:text="${board.numbers[52]}">
-            <td th:text="${board.numbers[53]}">
-        </tr>
-    </tbody>
-    <tbody>
-        <tr>
-            <td th:text="${board.numbers[54]}">
-            <td th:text="${board.numbers[55]}">
-            <td th:text="${board.numbers[56]}">
-            <td th:text="${board.numbers[57]}">
-            <td th:text="${board.numbers[58]}">
-            <td th:text="${board.numbers[59]}">
-            <td th:text="${board.numbers[60]}">
-            <td th:text="${board.numbers[61]}">
-            <td th:text="${board.numbers[62]}">
-        </tr>
-        <tr>
-            <td th:text="${board.numbers[63]}">
-            <td th:text="${board.numbers[64]}">
-            <td th:text="${board.numbers[65]}">
-            <td th:text="${board.numbers[66]}">
-            <td th:text="${board.numbers[67]}">
-            <td th:text="${board.numbers[68]}">
-            <td th:text="${board.numbers[69]}">
-            <td th:text="${board.numbers[70]}">
-            <td th:text="${board.numbers[71]}">
-        </tr>
-        <tr>
-            <td th:text="${board.numbers[72]}">
-            <td th:text="${board.numbers[73]}">
-            <td th:text="${board.numbers[74]}">
-            <td th:text="${board.numbers[75]}">
-            <td th:text="${board.numbers[76]}">
-            <td th:text="${board.numbers[77]}">
-            <td th:text="${board.numbers[78]}">
-            <td th:text="${board.numbers[79]}">
-            <td th:text="${board.numbers[80]}">
-        </tr>
-    </tbody>
-</table>
+<form action="#" th:action="@{/process}" th:object="${boardAsNumbers}" method="post">
+    <table>
+        <caption>Starting board</caption>
+        <colgroup><col><col><col>
+        <colgroup><col><col><col>
+        <colgroup><col><col><col>
+        <tbody>
+            <tr>
+                <td>
+                    <input type="text" th:field="*{numbers[0]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[1]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[2]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[3]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[4]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[5]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[6]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[7]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[8]}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" th:field="*{numbers[9]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[10]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[11]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[12]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[13]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[14]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[15]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[16]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[17]}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" th:field="*{numbers[18]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[19]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[20]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[21]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[22]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[23]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[24]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[25]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[26]}">
+                </td>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr>
+                <td>
+                    <input type="text" th:field="*{numbers[27]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[28]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[29]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[30]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[31]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[32]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[33]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[34]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[35]}">
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" th:field="*{numbers[36]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[37]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[38]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[39]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[40]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[41]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[42]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[43]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[44]}">
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" th:field="*{numbers[45]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[46]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[47]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[48]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[49]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[50]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[51]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[52]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[53]}">
+            </tr>
+        </tbody>
+        <tbody>
+            <tr>
+                <td>
+                    <input type="text" th:field="*{numbers[54]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[55]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[56]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[57]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[58]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[59]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[60]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[61]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[62]}">
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" th:field="*{numbers[63]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[64]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[65]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[66]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[67]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[68]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[69]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[70]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[71]}">
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" th:field="*{numbers[72]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[73]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[74]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[75]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[76]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[77]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[78]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[79]}">
+                </td>
+                <td>
+                    <input type="text" th:field="*{numbers[80]}">
+            </tr>
+        </tbody>
+    </table>
+    <th>
+        <button type="submit" name="update">Update and check integrity</button>
+    </th>
+    <p th:text="${message}"></p>
+</form>
 </html>
