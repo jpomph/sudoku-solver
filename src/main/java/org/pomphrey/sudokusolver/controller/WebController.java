@@ -58,13 +58,15 @@ public class WebController {
 
         Board workingBoard = Utils.getBoardFromNumbers(startingBoard);
 
-        if(SolutionUtils.processBoard(workingBoard)){
+        Board finalBoard = SolutionUtils.processBoard(workingBoard);
+
+        if(Utils.isBoardFinished(finalBoard)){
             model.addAttribute("message", "Board solved!");
         } else {
             model.addAttribute("message", "Board couldn't be solved :-(");
         }
 
-        solvedBoard = Utils.getBoardAsNumbers(workingBoard);
+        solvedBoard = Utils.getBoardAsNumbers(finalBoard);
         model.addAttribute("solvedBoard", solvedBoard);
 
 

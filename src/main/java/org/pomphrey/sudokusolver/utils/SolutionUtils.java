@@ -7,12 +7,14 @@ import java.util.List;
 
 public class SolutionUtils {
 
-    public static boolean processBoard(Board board) throws Exception{
+    public static Board processBoard(final Board board) throws Exception{
 
-        List<UnoccupiedSquare> unoccupiedSquareList = processToEndOrStuck(board);
+        Board workingBoard = Utils.copyBoard(board);
 
-        if(Utils.isBoardFinished(board)){
-            return true;
+        List<UnoccupiedSquare> unoccupiedSquareList = processToEndOrStuck(workingBoard);
+
+        if(Utils.isBoardFinished(workingBoard)){
+            return workingBoard;
         }
 
         List<UnoccupiedSquare> unoccupiedSquaresWith2Possibilities = new ArrayList();
@@ -28,24 +30,24 @@ public class SolutionUtils {
             int number1ToTry = unoccupiedSquaresWith2Possibilities.get(0).possibleValues.get(0);
             int number2ToTry = unoccupiedSquaresWith2Possibilities.get(0).possibleValues.get(1);
             //try with number 1
-            Board temporaryBoard = Utils.copyBoard(board);
+            Board temporaryBoard = Utils.copyBoard(workingBoard);
             temporaryBoard.updateNumber(number1ToTry, rowToTry, columnToTry);
-            if(processBoard(temporaryBoard)){
-                board = Utils.copyBoard(temporaryBoard);
-                return true;
+            Board processedTemporaryBoard = processBoard(temporaryBoard);
+            if(Utils.isBoardFinished(processedTemporaryBoard)) {
+                return processedTemporaryBoard;
             } else {
                 //try with number 2
-                temporaryBoard = Utils.copyBoard(board);
-                temporaryBoard.updateNumber(number2ToTry, rowToTry, columnToTry);
-                if(processBoard(temporaryBoard)){
-                    board = Utils.copyBoard(temporaryBoard);
-                    return true;
+                Board temporaryBoard2 = Utils.copyBoard(workingBoard);
+                temporaryBoard2.updateNumber(number2ToTry, rowToTry, columnToTry);
+                Board processedTemporaryBoard2 = processBoard(temporaryBoard2);
+                if(Utils.isBoardFinished(processedTemporaryBoard2)) {
+                    return processedTemporaryBoard2;
                 }
             }
 
         }
 
-        return false;
+        return workingBoard;
 
     }
 

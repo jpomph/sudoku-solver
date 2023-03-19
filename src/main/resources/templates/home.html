@@ -282,17 +282,19 @@ input { border: solid thin; height: 1.4em; width: 1.4em; text-align: center; pad
             </tr>
         </tbody>
     </table>
-    <th>
+    <p></p>
+    <p></p>
+    <p>
         <button type="submit" name="update">Update starting board and check integrity</button>
-    </th>
-    <th>
+    </p>
+    <p>
         <button type="submit" name="solve">Solve the board....</button>
-    </th>
+    </p>
     <p th:text="${message}"></p>
 </form>
 <form action="#" th:action="@{/process}" th:object="${solvedBoard}" method="post">
     <table>
-        <caption>Solved board</caption>
+        <caption>Solution</caption>
         <colgroup><col><col><col>
         <colgroup><col><col><col>
         <colgroup><col><col><col>

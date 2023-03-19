@@ -23,7 +23,9 @@ public class Main {
             return;
         }
 
-        if(SolutionUtils.processBoard(currentBoard)){
+        Board solvedBoard = SolutionUtils.processBoard(currentBoard);
+
+        if(Utils.isBoardFinished(solvedBoard)){
             System.out.println("BOARD SOLVED!!!");
         } else {
             System.out.println("BOARD COULD NOT BE SOLVED!!!");
