@@ -2,6 +2,7 @@ package org.pomphrey.sudokusolver.controller;
 
 import org.pomphrey.sudokusolver.model.Board;
 import org.pomphrey.sudokusolver.model.BoardAsNumbers;
+import org.pomphrey.sudokusolver.utils.SolutionUtils;
 import org.pomphrey.sudokusolver.utils.Utils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +19,8 @@ public class WebController {
 
         Board board = Utils.intitaliseBoard();
 
-        model.addAttribute("boardAsNumbers", Utils.getBoardAsNumbers(board));
+        model.addAttribute("startingBoard", Utils.getBoardAsNumbers(board));
+        model.addAttribute("solvedBoard", Utils.getBoardAsNumbers(board));
         model.addAttribute("message", "");
 
 
@@ -27,9 +29,12 @@ public class WebController {
     }
 
     @RequestMapping(value = "/process", params={"update"})
-    public String process(final BoardAsNumbers boardAsNumbers, final BindingResult bindingResult, Model model) {
+    public String update(@ModelAttribute("startingBoard") final BoardAsNumbers startingBoard,
+                          @ModelAttribute("solvedBoard") final BoardAsNumbers solvedBoard,
+                          final BindingResult bindingResult,
+                          Model model) {
 
-        Board board = Utils.getBoardFromNumbers(boardAsNumbers);
+        Board board = Utils.getBoardFromNumbers(startingBoard);
 
         String message = "";
 
@@ -45,6 +50,26 @@ public class WebController {
 
     }
 
+    @RequestMapping(value = "/process", params={"solve"})
+    public String solve(@ModelAttribute("startingBoard") final BoardAsNumbers startingBoard,
+                          @ModelAttribute("solvedBoard") BoardAsNumbers solvedBoard,
+                          final BindingResult bindingResult,
+                          Model model) throws Exception{
 
+        Board workingBoard = Utils.getBoardFromNumbers(startingBoard);
+
+        if(SolutionUtils.processBoard(workingBoard)){
+            model.addAttribute("message", "Board solved!");
+        } else {
+            model.addAttribute("message", "Board couldn't be solved :-(");
+        }
+
+        solvedBoard = Utils.getBoardAsNumbers(workingBoard);
+        model.addAttribute("solvedBoard", solvedBoard);
+
+
+        return "home";
+
+    }
 
 }

@@ -21,9 +21,14 @@ public class Board {
     public boolean integrity;
 
     public Board() {
-        rows = List.of(new Row(), new Row(), new Row(), new Row(), new Row(), new Row(), new Row(), new Row(), new Row());
-        columns = List.of(new Column(), new Column(), new Column(), new Column(), new Column(), new Column(), new Column(), new Column(), new Column());
-        squares = List.of(new Square(), new Square(), new Square(), new Square(), new Square(), new Square(), new Square(), new Square(), new Square());
+        rows = new ArrayList<Row>();
+        columns = new ArrayList<Column>();
+        squares = new ArrayList<Square>();
+        for(int i=0; i<9; i++){
+            rows.add(new Row());
+            columns.add(new Column());
+            squares.add(new Square());
+        }
     }
 
     public boolean updateNumber(Integer number, Integer row, Integer column) throws Exception{
